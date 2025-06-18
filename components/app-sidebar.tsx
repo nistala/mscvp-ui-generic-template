@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import {
   BarChart3,
   UserPlus,
@@ -115,37 +116,45 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   return (
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-4 py-2">
           <BarChart3 className="h-6 w-6" />
-          <span className="font-semibold text-lg">EDI Management</span>
+          <span className="font-semibold text-lg">miracleSCVP</span>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="space-y-0">
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+        <SidebarMenu>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.id}>
+          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+            <item.icon />
+            <span>{item.title}</span>
+          </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
-        <SidebarGroup>
-          <SidebarGroupLabel>User Management</SidebarGroupLabel>
+        <SidebarGroup >
+          <SidebarGroupLabel
+            onClick={() => setIsCollapsed((prev) => !prev)}
+            className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >
+            User Management
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {userManagement.map((item) => (
                 <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                  <SidebarMenuButton
+                    onClick={() => setActiveView(item.id)}
+                    isActive={activeView === item.id}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
                   </SidebarMenuButton>
@@ -154,68 +163,67 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
         {/* <SidebarGroup>
           <SidebarGroupLabel>Transaction Processing</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {transactionProcessing.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+        <SidebarMenu>
+          {transactionProcessing.map((item) => (
+            <SidebarMenuItem key={item.id}>
+          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+            <item.icon />
+            <span>{item.title}</span>
+          </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup> */}
-
         <SidebarGroup>
-          <SidebarGroupLabel>Analytics</SidebarGroupLabel>
+          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Analytics</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {analytics.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+        <SidebarMenu>
+          {analytics.map((item) => (
+            <SidebarMenuItem key={item.id}>
+          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+            <item.icon />
+            <span>{item.title}</span>
+          </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
         <SidebarGroup>
-          <SidebarGroupLabel>Transportation</SidebarGroupLabel>
+          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Transportation</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {transportation.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+        <SidebarMenu>
+          {transportation.map((item) => (
+            <SidebarMenuItem key={item.id}>
+          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+            <item.icon />
+            <span>{item.title}</span>
+          </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-
         <SidebarGroup>
-          <SidebarGroupLabel>Management</SidebarGroupLabel>
+          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Management</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {management.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+        <SidebarMenu>
+          {management.map((item) => (
+            <SidebarMenuItem key={item.id}>
+          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+            <item.icon />
+            <span>{item.title}</span>
+          </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
