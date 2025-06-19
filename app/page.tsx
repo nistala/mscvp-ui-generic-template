@@ -18,6 +18,7 @@ import { ArchivePurge } from "@/components/archive-purge"
 import { SidebarInset } from "@/components/ui/sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import LoginCard from "@/components/LoginCard"
+import { ProfileHeader } from "@/components/profile-header"
 
 export default function Page() {
   const [activeView, setActiveView] = useState("dashboard")
@@ -62,11 +63,15 @@ export default function Page() {
   }
 
   return (
-    <SidebarProvider>
-      <AppSidebar activeView={activeView} setActiveView={setActiveView} />
-      <SidebarInset>
-        <main className="flex-1 space-y-4 p-4 md:p-8 pt-6">{renderContent()}</main>
-      </SidebarInset>
-    </SidebarProvider>
+  <SidebarProvider>
+    <AppSidebar
+      activeView={activeView}
+      setActiveView={setActiveView}
+    />
+    <SidebarInset>
+      <ProfileHeader activeView={activeView} />
+      <main className="flex-1 space-y-4 p-4 md:p-8 pt-6">{renderContent()}</main>
+    </SidebarInset>
+   </SidebarProvider>
   )
 }
