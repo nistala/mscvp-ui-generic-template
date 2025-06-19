@@ -129,7 +129,7 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   return (
     <Sidebar >
-      <SidebarHeader >
+      <SidebarHeader className="bg-[#ffffff]">
         <div className="flex justify-center py-1">
           {/* <BarChart3 className="h-6 w-6" /> */}
           {/* <span className="font-semibold text-lg">miracleSCVP</span> */}
@@ -255,7 +255,7 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
           </Avatar>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-gray-900 truncate">John Doe</p>
-            <p className="text-xs text-gray-500 truncate">EDI Administrator</p>
+            <p className="text-xs text-gray-500 truncate"> Miracle Software Systems, Inc.</p>
           </div>
           <button
             type="button"

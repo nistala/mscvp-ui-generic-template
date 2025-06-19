@@ -38,10 +38,19 @@ const documentTypes = [
 export function Dashboard() {
   return (
     <div className="space-y-6">
-      <div>
+      {/* <div>
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
         <p className="text-muted-foreground">Overview of EDI transaction processing and system performance</p>
-      </div>
+      </div> */}
+
+      <Card className="h-24">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <CardTitle className="text-3xl " style={{display:"flex", flexDirection:"row"}}>Dashboard</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm font-bold text-[#8c8c8c]">Overview of EDI transaction processing and system performance</div>
+        </CardContent>
+      </Card>
 
       {/* KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

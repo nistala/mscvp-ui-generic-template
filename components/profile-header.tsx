@@ -39,11 +39,11 @@ export function ProfileHeader({ activeView }: ProfileHeaderProps) {
 
     return (
         <header
-            className="fixed top-0 right-0 z-50 flex h-16 items-center justify-between border-b px-4 lg:px-6"
-            style={{ background: "#b7b2b3", left: "var(--sidebar-width, 240px)" }}
+            className="fixed top-0 right-0 z-50 flex h-16 items-center justify-between border-b px-4 lg:px-6 "
+            style={{ background: "#ffffff", left: "var(--sidebar-width, 240px)" }}
         >
             <div className="flex items-center space-x-4">
-            <h1 className="text-lg font-semibold">Miracle Supply Chain Visibility Portal</h1>
+            <h1 className="text-2xl font-bold text-[#2368a0]">Miracle Supply Chain Visibility Portal</h1>
             </div>
 
             {/* Right side - Profile section */}
