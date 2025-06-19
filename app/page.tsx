@@ -17,9 +17,11 @@ import { Partners } from "@/components/partners"
 import { ArchivePurge } from "@/components/archive-purge"
 import { SidebarInset } from "@/components/ui/sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
+import LoginCard from "@/components/LoginCard"
 
 export default function Page() {
   const [activeView, setActiveView] = useState("dashboard")
+  const [isLoggedIn, setIsLoggedIn] = useState(false) // 🔐 Add login state
 
   const renderContent = () => {
     switch (activeView) {
@@ -52,6 +54,11 @@ export default function Page() {
       default:
         return <Dashboard />
     }
+  }
+
+  if (!isLoggedIn) {
+    // 🟣 Show login until logged in
+    return <LoginCard onLoginSuccess={() => setIsLoggedIn(true)} />
   }
 
   return (
