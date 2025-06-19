@@ -85,7 +85,7 @@ export function TPVolumes() {
 
       {/* Volume Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="bg-[#cbe6f3]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Volume</CardTitle>
             <Badge variant="default">+9.2%</Badge>
@@ -95,7 +95,7 @@ export function TPVolumes() {
             <p className="text-xs text-muted-foreground">transactions this month</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#f5e7e0]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Top Partner</CardTitle>
             <Badge variant="secondary">Partner A</Badge>
@@ -105,7 +105,7 @@ export function TPVolumes() {
             <p className="text-xs text-muted-foreground">34.8% of total volume</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#ebfaeb]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Daily Average</CardTitle>
             <Badge variant="default">3,590</Badge>
@@ -115,7 +115,7 @@ export function TPVolumes() {
             <p className="text-xs text-muted-foreground">transactions per day</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#f4e8f7]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Growth Rate</CardTitle>
             <Badge variant="default">+9.2%</Badge>

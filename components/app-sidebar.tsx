@@ -29,16 +29,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarHeader,
-   SidebarFooter,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
 
-const menuItems = [
-  {
-    title: "Dashboard",
-    icon: LayoutDashboard,
-    id: "dashboard",
-  },
-]
+// const menuItems = [
+//   {
+//     title: "Dashboard",
+//     icon: LayoutDashboard,
+//     id: "dashboard",
+//   },
+// ]
 
 const userManagement = [
   {
@@ -67,6 +67,11 @@ const transactionProcessing = [
 ]
 
 const analytics = [
+  {
+    title: "Dashboard",
+    icon: LayoutDashboard,
+    id: "dashboard",
+  },
   {
     title: "Daily Stats",
     icon: Calendar,
@@ -126,10 +131,13 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
         </div>
       </SidebarHeader>
       <SidebarContent className="space-y-0">
-        <SidebarGroup>
+
+
+        {/* <SidebarGroup>
+          <SidebarGroupLabel>Transaction Processing</SidebarGroupLabel>
           <SidebarGroupContent>
         <SidebarMenu>
-          {menuItems.map((item) => (
+          {transactionProcessing.map((item) => (
             <SidebarMenuItem key={item.id}>
           <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
             <item.icon />
@@ -139,7 +147,61 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
           ))}
         </SidebarMenu>
           </SidebarGroupContent>
+        </SidebarGroup> */}
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Analytics</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {analytics.map((item) => (
+                <SidebarMenuItem key={item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
+
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Documentry</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {transportation.map((item) => (
+                <SidebarMenuItem key={item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
+          >Operations</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {management.map((item) => (
+                <SidebarMenuItem key={item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
         <SidebarGroup >
           <SidebarGroupLabel
             onClick={() => setIsCollapsed((prev) => !prev)}
@@ -163,71 +225,12 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        {/* <SidebarGroup>
-          <SidebarGroupLabel>Transaction Processing</SidebarGroupLabel>
-          <SidebarGroupContent>
-        <SidebarMenu>
-          {transactionProcessing.map((item) => (
-            <SidebarMenuItem key={item.id}>
-          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-            <item.icon />
-            <span>{item.title}</span>
-          </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup> */}
-        <SidebarGroup>
-          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Analytics</SidebarGroupLabel>
-          <SidebarGroupContent>
-        <SidebarMenu>
-          {analytics.map((item) => (
-            <SidebarMenuItem key={item.id}>
-          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-            <item.icon />
-            <span>{item.title}</span>
-          </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Transportation</SidebarGroupLabel>
-          <SidebarGroupContent>
-        <SidebarMenu>
-          {transportation.map((item) => (
-            <SidebarMenuItem key={item.id}>
-          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-            <item.icon />
-            <span>{item.title}</span>
-          </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel  className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Management</SidebarGroupLabel>
-          <SidebarGroupContent>
-        <SidebarMenu>
-          {management.map((item) => (
-            <SidebarMenuItem key={item.id}>
-          <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
-            <item.icon />
-            <span>{item.title}</span>
-          </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+
       </SidebarContent>
-       <SidebarFooter className="border-t border-gray-200 p-4">
+
+
+
+      <SidebarFooter className="border-t border-gray-200 p-4">
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8">
             <AvatarImage src="/placeholder-user.jpg" />

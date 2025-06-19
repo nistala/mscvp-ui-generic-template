@@ -101,6 +101,7 @@ export function DocumentRepository() {
   const [selectedTransactions, setSelectedTransactions] = useState<string[]>(
     []
   );
+  const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null);
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
@@ -346,7 +347,12 @@ export function DocumentRepository() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                          // Set a state to show the document-repository-by-id component for this doc.id
+                          setSelectedDocumentId(doc.id);
+                          }}
+                        >
                           <Eye className="mr-2 h-4 w-4" />
                           View Document
                         </DropdownMenuItem>

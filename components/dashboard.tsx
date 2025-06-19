@@ -45,17 +45,20 @@ export function Dashboard() {
 
       {/* KPI Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {kpiData.map((kpi) => (
-          <Card key={kpi.name}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{kpi.name}</CardTitle>
-              <Badge variant={kpi.trend === "up" ? "default" : "secondary"}>{kpi.change}</Badge>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{kpi.value}</div>
-            </CardContent>
-          </Card>
-        ))}
+        {["#cbe6f3", "#f5e7e0", "#ebfaeb", "#f4e8f7"].map((bg, idx) => {
+          const kpi = kpiData[idx];
+          return (
+            <Card key={kpi.name} style={{ backgroundColor: bg }}>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">{kpi.name}</CardTitle>
+                <Badge variant={kpi.trend === "up" ? "default" : "secondary"}>{kpi.change}</Badge>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{kpi.value}</div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">

@@ -56,7 +56,7 @@ export function DailyStats() {
 
       {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="bg-[#cbe6f3]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Transactions</CardTitle>
             <Badge variant="default">+12.5%</Badge>
@@ -66,7 +66,7 @@ export function DailyStats() {
             <p className="text-xs text-muted-foreground">vs 4,065 yesterday</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#f5e7e0]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Success Rate</CardTitle>
             <Badge variant="default">97.8%</Badge>
@@ -76,7 +76,7 @@ export function DailyStats() {
             <p className="text-xs text-muted-foreground">100 failures</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#ebfaeb]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Peak Hour</CardTitle>
             <Badge variant="secondary">09:00</Badge>
@@ -86,7 +86,7 @@ export function DailyStats() {
             <p className="text-xs text-muted-foreground">transactions/hour</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-[#f4e8f7]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Avg Processing</CardTitle>
             <Badge variant="default">-15.3%</Badge>
