@@ -40,17 +40,18 @@ export function ProfileHeader({ activeView }: ProfileHeaderProps) {
     return (
         <header
             className="fixed top-0 right-0 z-50 flex h-16 items-center justify-between border-b px-4 lg:px-6 "
-            style={{ background: "#ffffff", left: "var(--sidebar-width, 240px)" }}
+            style={{ background: "#0d416b", left: "var(--sidebar-width, 240px)" }}
         >
             <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-[#2368a0]">Miracle Supply Chain Visibility Portal</h1>
+            <h1 className="text-xl font-bold text-[#ffffff]">Miracle Supply Chain Visibility Portal</h1>
             </div>
 
-            {/* Right side - Profile section */}
+ 
             <div className="flex items-center space-x-4">
+                <span className="text-sm font-medium" style={{ color: "#ffffff" }}>John Doe</span>
             {/* Notifications */}
             <Button variant="ghost" size="sm">
-                <Bell className="h-4 w-4" />
+                <Bell className="h-4 w-4" color="#ffffff" />
                 <span className="sr-only">Notifications</span>
             </Button>
 

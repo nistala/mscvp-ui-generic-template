@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
+import clsx from "clsx"
 
 const kpiData = [
   { name: "Total Transactions", value: "24,567", change: "+12.5%", trend: "up" },
@@ -45,7 +46,7 @@ export function Dashboard() {
 
       <Card className="h-24">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
-          <CardTitle className="text-3xl " style={{display:"flex", flexDirection:"row"}}>Dashboard</CardTitle>
+          <CardTitle className="text-3xl " style={{ display: "flex", flexDirection: "row" }}>Dashboard</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-sm font-bold text-[#8c8c8c]">Overview of EDI transaction processing and system performance</div>
@@ -53,14 +54,22 @@ export function Dashboard() {
       </Card>
 
       {/* KPI Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {["#cbe6f3", "#f5e7e0", "#ebfaeb", "#f4e8f7"].map((bg, idx) => {
+      {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {["#00aae7", "#b7b2b3", "#0d416b", "#8c8c8c"].map((bg, idx) => {
           const kpi = kpiData[idx];
           return (
-            <Card key={kpi.name} style={{ backgroundColor: bg }}>
+            <Card key={kpi.name}
+            // style={{ backgroundColor: bg }}
+            >
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">{kpi.name}</CardTitle>
-                <Badge variant={kpi.trend === "up" ? "default" : "secondary"}>{kpi.change}</Badge>
+                <Badge
+                  // variant={kpi.trend === "up" ? "default" : "secondary"}
+                  className={clsx("text-white", {
+                    "bg-[#2368a0]": kpi.trend === "up",
+                    "bg-[#00aae7]": kpi.trend !== "up",
+                  })}
+                >{kpi.change}</Badge>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{kpi.value}</div>
@@ -68,7 +77,40 @@ export function Dashboard() {
             </Card>
           );
         })}
+      </div> */}
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {["#2368a0", "#00aae7", "#00aae7", "#2368a0"].map((bg, idx) => {
+          const kpi = kpiData[idx];
+          return (
+            <div key={kpi.name} className="relative">
+              {/* Left colored strip */}
+              <div
+                className="absolute top-0 left-0 h-full w-2 rounded-l-md"
+                style={{ backgroundColor: bg }}
+              />
+
+              <Card className="pl-3">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">{kpi.name}</CardTitle>
+                  <Badge
+                    className={clsx("text-white", {
+                      "bg-[#2368a0]": kpi.trend === "up",
+                      "bg-[#00aae7]": kpi.trend !== "up",
+                    })}
+                  >
+                    {kpi.change}
+                  </Badge>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{kpi.value}</div>
+                </CardContent>
+              </Card>
+            </div>
+          );
+        })}
       </div>
+
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         {/* Daily Trends Chart */}

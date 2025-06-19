@@ -76,7 +76,7 @@ export default function Page() {
       // onBack={() => setSelectedDocumentId(null)}
       />
       <ProfileHeader activeView={activeView} />
-    <SidebarInset className="py-9">
+    <SidebarInset className="py-10">
       <main className="flex-1 space-y-4 p-4 md:p-8 pt-6">{renderContent()}</main>
     </SidebarInset>
    </SidebarProvider>
