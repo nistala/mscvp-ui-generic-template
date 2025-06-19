@@ -3,7 +3,7 @@ import './globals.css'
 import { Cabin } from 'next/font/google'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
+  title: 'miracleSCVP',
   description: 'Created with v0',
   generator: 'v0.dev',
 }
