@@ -95,14 +95,20 @@ const documents = [
   },
 ];
 
-export function DocumentRepository() {
+type DocumentRepositoryProps = {
+  onViewDocById: (docId: string) => void
+}
+
+
+export function DocumentRepository({ onViewDocById }: DocumentRepositoryProps) {
   const [dateFrom, setDateFrom] = useState<Date>();
   const [dateTo, setDateTo] = useState<Date>();
   const [selectedTransactions, setSelectedTransactions] = useState<string[]>(
     []
   );
-  const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null);
+  // const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null);
 
+  
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
       setSelectedTransactions(documents.map((t) => t.id));
@@ -118,6 +124,7 @@ export function DocumentRepository() {
       setSelectedTransactions(selectedTransactions.filter((t) => t !== id));
     }
   };
+
 
   return (
     <div className="space-y-6">
@@ -267,8 +274,8 @@ export function DocumentRepository() {
             <Button
               variant="outline"
               disabled={
-              selectedTransactions.length === 0 ||
-              selectedTransactions.length === documents.length
+                selectedTransactions.length === 0 ||
+                selectedTransactions.length === documents.length
               }
             >
               <RefreshCw className="mr-2 h-4 w-4" />
@@ -349,8 +356,8 @@ export function DocumentRepository() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
                           onClick={() => {
-                          // Set a state to show the document-repository-by-id component for this doc.id
-                          setSelectedDocumentId(doc.id);
+                            // Set a state to show the document-repository-by-id component for this doc.id
+                            onViewDocById(doc.id) 
                           }}
                         >
                           <Eye className="mr-2 h-4 w-4" />

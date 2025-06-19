@@ -31,6 +31,7 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar"
+import Image from "next/image"
 
 // const menuItems = [
 //   {
@@ -90,11 +91,11 @@ const transportation = [
     icon: FileText,
     id: "document-repository",
   },
-  {
-    title: "Document Repository by ID",
-    icon: Hash,
-    id: "document-repository-by-id",
-  },
+  // {
+  //   title: "Document Repository by ID",
+  //   icon: Hash,
+  //   id: "document-repository-by-id",
+  // },
   // {
   //   title: "Transportation Order Management",
   //   icon: Truck,
@@ -120,18 +121,27 @@ interface AppSidebarProps {
   setActiveView: (view: string) => void
 }
 
+type DocumentRepositoryByIdProps = {
+  onBack: () => void;
+};
+
 export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-4 py-2">
-          <BarChart3 className="h-6 w-6" />
-          <span className="font-semibold text-lg">miracleSCVP</span>
+    <Sidebar >
+      <SidebarHeader >
+        <div className="flex justify-center py-1">
+          {/* <BarChart3 className="h-6 w-6" /> */}
+          {/* <span className="font-semibold text-lg">miracleSCVP</span> */}
+          <img
+            src="/Miracle-Dark-Logo.png"
+            alt="Logo"
+            className="w-40 h-auto" 
+          />
         </div>
-      </SidebarHeader>
-      <SidebarContent className="space-y-0">
 
+      </SidebarHeader>
+      <SidebarContent className="space-y-0" style={{ backgroundColor: "#2368a0", color: "white" }}>
 
         {/* <SidebarGroup>
           <SidebarGroupLabel>Transaction Processing</SidebarGroupLabel>
@@ -151,12 +161,14 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
 
         <SidebarGroup>
           <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Analytics</SidebarGroupLabel>
+            style={{ color: "white" }}>Analytics</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {analytics.map((item) => (
                 <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}
+                    className={activeView === item.id ? "bg-[#ffffff] text-[#232527] font-semibold rounded-md" : "hover:bg-white/10"}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
                   </SidebarMenuButton>
@@ -169,12 +181,14 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
 
         <SidebarGroup>
           <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Documentry</SidebarGroupLabel>
+            style={{ color: "white" }}>Documentry</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {transportation.map((item) => (
                 <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}
+                    className={activeView === item.id ? "bg-[#ffffff] text-[#232527] font-semibold rounded-md" : "hover:bg-white/10"}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
                   </SidebarMenuButton>
@@ -187,12 +201,14 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
 
         <SidebarGroup>
           <SidebarGroupLabel className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >Operations</SidebarGroupLabel>
+            style={{ color: "white" }}>Operations</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {management.map((item) => (
                 <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}>
+                  <SidebarMenuButton onClick={() => setActiveView(item.id)} isActive={activeView === item.id}
+                    className={activeView === item.id ? "bg-[#ffffff] text-[#232527] font-semibold rounded-md" : "hover:bg-white/10"}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
                   </SidebarMenuButton>
@@ -206,7 +222,7 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
           <SidebarGroupLabel
             onClick={() => setIsCollapsed((prev) => !prev)}
             className="cursor-pointer flex justify-between items-center font-bold text-black text-lg"
-          >
+            style={{ color: "white" }}>
             User Management
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -216,6 +232,7 @@ export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
                   <SidebarMenuButton
                     onClick={() => setActiveView(item.id)}
                     isActive={activeView === item.id}
+                    className={activeView === item.id ? "bg-[#ffffff] text-[#232527] font-semibold rounded-md" : "hover:bg-white/10"}
                   >
                     <item.icon />
                     <span>{item.title}</span>

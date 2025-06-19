@@ -20,7 +20,7 @@ export function ProfileHeader({ activeView }: ProfileHeaderProps) {
     // Get the title based on active view
     const getPageTitle = (view: string) => {
         const titles: Record<string, string> = {
-            dashboard: "Miracle Supply Chain Visibility Portal",
+            dashboard: "Dashboard",
             profile: "User Profile",
             "user-creation": "User Creation",
             "user-search": "User Search",
@@ -43,7 +43,7 @@ export function ProfileHeader({ activeView }: ProfileHeaderProps) {
             style={{ background: "#b7b2b3", left: "var(--sidebar-width, 240px)" }}
         >
             <div className="flex items-center space-x-4">
-            <h1 className="text-lg font-semibold">{getPageTitle(activeView)}</h1>
+            <h1 className="text-lg font-semibold">Miracle Supply Chain Visibility Portal</h1>
             </div>
 
             {/* Right side - Profile section */}

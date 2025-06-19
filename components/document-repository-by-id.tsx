@@ -9,6 +9,12 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search, Download, RefreshCw, Clock, CheckCircle, XCircle } from "lucide-react"
 
+
+type DocumentRepositoryByIdProps = {
+  docId: string;
+  onBack: () => void;
+};
+
 const documentDetails = {
   id: "DOC-2024-001",
   type: "EDI 850 (Purchase Order)",
@@ -78,7 +84,7 @@ SE*10*0001~
 GE*1*1~
 IEA*1*000000001~`
 
-export function DocumentRepositoryById() {
+export function DocumentRepositoryById({ docId, onBack }: DocumentRepositoryByIdProps) {
   const [searchId, setSearchId] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 

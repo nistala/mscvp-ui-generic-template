@@ -22,7 +22,9 @@ import { ProfileHeader } from "@/components/profile-header"
 
 export default function Page() {
   const [activeView, setActiveView] = useState("dashboard")
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // 🔐 Add login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null)
 
   const renderContent = () => {
     switch (activeView) {
@@ -43,9 +45,12 @@ export default function Page() {
       case "tp-volumes":
         return <TPVolumes />
       case "document-repository":
-        return <DocumentRepository />
-      case "document-repository-by-id":
-        return <DocumentRepositoryById />
+        return selectedDocumentId ? (
+          <DocumentRepositoryById docId={selectedDocumentId} onBack={() => setSelectedDocumentId(null)} />
+        ) : (
+          <DocumentRepository onViewDocById={(docId) => setSelectedDocumentId(docId)} />
+        );
+
       case "transportation-order-management":
         return <TransportationOrderManagement />
       case "partners":
@@ -67,9 +72,11 @@ export default function Page() {
     <AppSidebar
       activeView={activeView}
       setActiveView={setActiveView}
-    />
-    <SidebarInset>
+     
+      // onBack={() => setSelectedDocumentId(null)}
+      />
       <ProfileHeader activeView={activeView} />
+    <SidebarInset>
       <main className="flex-1 space-y-4 p-4 md:p-8 pt-6">{renderContent()}</main>
     </SidebarInset>
    </SidebarProvider>
