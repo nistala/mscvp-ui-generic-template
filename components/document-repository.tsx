@@ -128,14 +128,23 @@ export function DocumentRepository({ onViewDocById }: DocumentRepositoryProps) {
 
   return (
     <div className="space-y-6">
-      <div>
+      {/* <div>
         <h2 className="text-3xl font-bold tracking-tight">
           Document Repository
         </h2>
         <p className="text-muted-foreground">
           Centralized view of all transaction documents
         </p>
-      </div>
+      </div> */}
+
+       <Card className="h-24">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <CardTitle className="text-3xl " style={{ display: "flex", flexDirection: "row" }}>Document Repository</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm font-bold text-[#8c8c8c]">Centralized view of all transaction documents</div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

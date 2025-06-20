@@ -25,6 +25,8 @@ export default function Page() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null)
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); 
+
 
   const renderContent = () => {
     switch (activeView) {
@@ -72,10 +74,12 @@ export default function Page() {
     <AppSidebar
       activeView={activeView}
       setActiveView={setActiveView}
-     
+      isCollapsed={isSidebarCollapsed}
       // onBack={() => setSelectedDocumentId(null)}
       />
-      <ProfileHeader activeView={activeView} />
+      <ProfileHeader activeView={activeView} 
+      onToggleSidebar={() => setIsSidebarCollapsed((prev) => !prev)}
+      />
     <SidebarInset className="py-10">
       <main className="flex-1 space-y-4 p-4 md:p-8 pt-6">{renderContent()}</main>
     </SidebarInset>

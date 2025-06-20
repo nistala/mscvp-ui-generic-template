@@ -36,11 +36,14 @@ const partnerData = [
 export function DailyStats() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+
+      {/* <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Daily Stats</h2>
           <p className="text-muted-foreground">Detailed daily transaction analysis and success ratios</p>
         </div>
+
+
         <Select defaultValue="today">
           <SelectTrigger className="w-[180px]">
             <SelectValue />
@@ -52,7 +55,35 @@ export function DailyStats() {
             <SelectItem value="last30days">Last 30 Days</SelectItem>
           </SelectContent>
         </Select>
-      </div>
+      </div> */}
+
+      <Card className="h-auto">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <div>
+            <CardTitle className="text-3xl font-bold tracking-tight">Daily Stats</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Detailed daily transaction analysis and success ratios
+            </p>
+          </div>
+
+          <Select defaultValue="today">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="today">Today</SelectItem>
+              <SelectItem value="yesterday">Yesterday</SelectItem>
+              <SelectItem value="last7days">Last 7 Days</SelectItem>
+              <SelectItem value="last30days">Last 30 Days</SelectItem>
+            </SelectContent>
+          </Select>
+        </CardHeader>
+
+        <CardContent>
+          {/* Place your daily stats content here */}
+        </CardContent>
+      </Card>
+
 
       {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

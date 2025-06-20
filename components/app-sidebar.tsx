@@ -125,6 +125,13 @@ type DocumentRepositoryByIdProps = {
   onBack: () => void;
 };
 
+interface AppSidebarProps {
+  activeView: string
+  setActiveView: (view: string) => void
+  isCollapsed: boolean
+}
+
+
 export function AppSidebar({ activeView, setActiveView }: AppSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   return (

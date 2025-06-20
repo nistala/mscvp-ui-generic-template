@@ -85,12 +85,21 @@ export function ArchivePurge() {
 
   return (
     <div className="space-y-6">
-      <div>
+      {/* <div>
         <h2 className="text-3xl font-bold tracking-tight">Archive & Purge</h2>
         <p className="text-muted-foreground">
           Manage data archiving jobs and retention policies
         </p>
-      </div>
+      </div> */}
+
+      <Card className="h-24">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <CardTitle className="text-3xl " style={{ display: "flex", flexDirection: "row" }}>Archive & Purge</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm font-bold text-[#8c8c8c]">Manage data archiving jobs and retention policies</div>
+        </CardContent>
+      </Card>
 
       {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

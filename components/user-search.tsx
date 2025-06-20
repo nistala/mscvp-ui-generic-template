@@ -57,10 +57,19 @@ export function UserSearch() {
 
   return (
     <div className="space-y-6">
-      <div>
+      {/* <div>
         <h2 className="text-3xl font-bold tracking-tight">User Search</h2>
         <p className="text-muted-foreground">Search, filter, and manage existing users</p>
-      </div>
+      </div> */}
+
+      <Card className="h-24">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <CardTitle className="text-3xl " style={{ display: "flex", flexDirection: "row" }}>User Search</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm font-bold text-[#8c8c8c]">Search, filter, and manage existing users</div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

@@ -66,7 +66,7 @@ const partnerVolumes = [
 export function TPVolumes() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">TP Volumes</h2>
           <p className="text-muted-foreground">Volumetric analysis by Trading Partner</p>
@@ -81,7 +81,34 @@ export function TPVolumes() {
             <SelectItem value="monthly">Monthly View</SelectItem>
           </SelectContent>
         </Select>
-      </div>
+      </div> */}
+
+      <Card className="h-auto">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <div>
+            <CardTitle className="text-3xl font-bold tracking-tight">TP Volumes</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Volumetric analysis by Trading Partner
+            </p>
+          </div>
+
+          <Select defaultValue="monthly">
+            <SelectTrigger className="w-[180px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="daily">Daily View</SelectItem>
+              <SelectItem value="weekly">Weekly View</SelectItem>
+              <SelectItem value="monthly">Monthly View</SelectItem>
+            </SelectContent>
+          </Select>
+        </CardHeader>
+
+        <CardContent>
+          {/* Add your chart or data content here */}
+        </CardContent>
+      </Card>
+
 
       {/* Volume Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

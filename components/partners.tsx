@@ -62,7 +62,7 @@ export function Partners() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Partners</h2>
           <p className="text-muted-foreground">Manage trading partner profiles and EDI configurations</p>
@@ -151,7 +151,113 @@ export function Partners() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div>
+      </div> */}
+
+      <Card className="h-auto">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <div>
+            <CardTitle className="text-3xl font-bold tracking-tight">Partners</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Manage trading partner profiles and EDI configurations
+            </p>
+          </div>
+
+          <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+            <DialogTrigger asChild>
+              <Button>
+                <Plus className="mr-2 h-4 w-4" />
+                Add Partner
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>Create New Partner</DialogTitle>
+                <DialogDescription>
+                  Add a new trading partner with EDI configuration
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="grid gap-4 py-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="partnerName">Partner Name *</Label>
+                    <Input id="partnerName" placeholder="Enter partner name" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="partnerId">Partner ID *</Label>
+                    <Input id="partnerId" placeholder="EDI Partner ID" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="connectionType">Connection Type</Label>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select connection type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="AS2">AS2</SelectItem>
+                        <SelectItem value="SFTP">SFTP</SelectItem>
+                        <SelectItem value="HTTP">HTTP/HTTPS</SelectItem>
+                        <SelectItem value="FTP">FTP</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="status">Status</Label>
+                    <Select defaultValue="Active">
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Active">Active</SelectItem>
+                        <SelectItem value="Inactive">Inactive</SelectItem>
+                        <SelectItem value="Testing">Testing</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Allowed Document Types</Label>
+                  <div className="grid gap-2 md:grid-cols-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="edi850" />
+                      <Label htmlFor="edi850">EDI 850 (Purchase Order)</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="edi855" />
+                      <Label htmlFor="edi855">EDI 855 (PO Acknowledgment)</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="edi856" />
+                      <Label htmlFor="edi856">EDI 856 (Advance Ship Notice)</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox id="edi810" />
+                      <Label htmlFor="edi810">EDI 810 (Invoice)</Label>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="notes">Notes</Label>
+                  <Textarea id="notes" placeholder="Additional notes about the partner..." />
+                </div>
+              </div>
+
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => setIsCreateDialogOpen(false)}>Create Partner</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </CardHeader>
+
+        <CardContent>
+        </CardContent>
+      </Card>
+
 
       <Card>
         <CardHeader>

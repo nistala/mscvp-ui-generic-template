@@ -98,10 +98,19 @@ export function DocumentRepositoryById({ docId, onBack }: DocumentRepositoryById
 
   return (
     <div className="space-y-6">
-      <div>
+      {/* <div>
         <h2 className="text-3xl font-bold tracking-tight">Document Repository by ID</h2>
         <p className="text-muted-foreground">Quick lookup for documents using transaction or reference ID</p>
-      </div>
+      </div> */}
+
+      <Card className="h-24">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+          <CardTitle className="text-3xl " style={{ display: "flex", flexDirection: "row" }}>Document Repository by ID</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm font-bold text-[#8c8c8c]">Quick lookup for documents using transaction or reference ID</div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
