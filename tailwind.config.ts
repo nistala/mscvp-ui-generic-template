@@ -11,7 +11,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				cabin: ['Cabin', 'sans-serif'],
+				cabin: ['monserrat', 'sans-serif'],
 			},
 			colors: {
 				background: 'hsl(var(--background))',

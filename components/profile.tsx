@@ -33,15 +33,15 @@ export function Profile() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
               <Label htmlFor="firstName">First Name</Label>
-              <Input id="firstName" defaultValue="John" disabled />
+              <Input id="firstName" defaultValue="Sai Kartik" disabled />
               </div>
               <div className="space-y-2">
               <Label htmlFor="lastName">Last Name</Label>
-              <Input id="lastName" defaultValue="Doe" disabled />
+              <Input id="lastName" defaultValue="Nistala" disabled />
               </div>
               <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" defaultValue="john.doe@company.com" disabled />
+              <Input id="email" type="email" defaultValue="snistala@miraclesoft.com" disabled />
               </div>
               <div className="space-y-2">
               <Label htmlFor="phone">Phone</Label>
@@ -58,8 +58,8 @@ export function Profile() {
             </div>
 
             <div className="flex space-x-4">
-              <Button className="w-32" disabled={true}>Save Changes</Button>
-              <Button className="w-32">Edit</Button>
+              <Button className="w-32 bg-[ #0d416b]" disabled={true}>Save Changes</Button>
+              <Button className="w-32 bg-[ #8c8c8c]">Edit</Button>
             </div>
           </CardContent>
         </Card>

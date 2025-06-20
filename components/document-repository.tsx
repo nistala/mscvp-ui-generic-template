@@ -262,7 +262,9 @@ export function DocumentRepository({ onViewDocById }: DocumentRepositoryProps) {
             </div>
           </div>
           <div className="flex justify-between items-center mt-4">
-            <Button>Apply Filters</Button>
+            <Button style={{ backgroundColor: "#0d416b", color: "#fff" }}>
+              Apply Filters
+            </Button>
             <Button variant="outline">
               <Download className="mr-2 h-4 w-4" />
               Export Results

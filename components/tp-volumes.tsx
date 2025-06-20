@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts"
-
+import clsx from "clsx"
 const volumeData = [
   { period: "Week 1", partnerA: 2400, partnerB: 1800, partnerC: 1200, partnerD: 800 },
   { period: "Week 2", partnerA: 2600, partnerB: 1900, partnerC: 1100, partnerD: 900 },
@@ -63,6 +63,13 @@ const partnerVolumes = [
   },
 ]
 
+
+const kpiData = [
+  { name: "Total Volume", value: "107,700", change: "+9.5%", label:"transactions this month",trend:"up" },
+  { name: "Top Patners", value: "37,500", change: "Patner A", label:"34.8% of total volume", trend:"down" },
+  { name: "Daily Average", value: "3590", change: "9.2%", label:"transactions per day",trend:"down"  },
+  { name: "Growth Rate", value: "9.2%", change: "+3.1%", label:"vs previous month",trend:"up" },
+]
 export function TPVolumes() {
 
   const getTrendColor = (trend: string) =>
@@ -117,46 +124,36 @@ export function TPVolumes() {
 
       {/* Volume Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-[#cbe6f3]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Volume</CardTitle>
-            <Badge variant="default">+9.2%</Badge>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">107,700</div>
-            <p className="text-xs text-muted-foreground">transactions this month</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-[#f5e7e0]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Top Partner</CardTitle>
-            <Badge variant="secondary">Partner A</Badge>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">37,500</div>
-            <p className="text-xs text-muted-foreground">34.8% of total volume</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-[#ebfaeb]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Daily Average</CardTitle>
-            <Badge variant="default">3,590</Badge>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">3,590</div>
-            <p className="text-xs text-muted-foreground">transactions per day</p>
-          </CardContent>
-        </Card>
-        <Card className="bg-[#f4e8f7]">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Growth Rate</CardTitle>
-            <Badge variant="default">+9.2%</Badge>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">9.2%</div>
-            <p className="text-xs text-muted-foreground">vs previous month</p>
-          </CardContent>
-        </Card>
+        {["#2368a0", "#00aae7", "#00aae7", "#2368a0"].map((bg, idx) => {
+          const kpi = kpiData[idx];
+          return (
+            <div key={kpi.name} className="relative">
+              {/* Left colored strip */}
+              <div
+                className="absolute top-0 left-0 h-full w-2 rounded-l-md"
+                style={{ backgroundColor: bg }}
+              />
+
+              <Card className="pl-3">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">{kpi.name}</CardTitle>
+                  <Badge
+                    className={clsx("text-white", {
+                      "bg-[#2368a0]": kpi.trend === "up",
+                      "bg-[#00aae7]": kpi.trend !== "up",
+                    })}
+                  >
+                    {kpi.change}
+                  </Badge>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{kpi.value}</div>
+                  <div className="text-sm text-muted-foreground">{kpi.label}</div>
+                </CardContent>
+              </Card>
+            </div>
+          );
+        })}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
