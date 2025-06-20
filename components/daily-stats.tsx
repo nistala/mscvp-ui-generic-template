@@ -34,6 +34,16 @@ const partnerData = [
 ]
 
 export function DailyStats() {
+
+  const COLORS = ['#00aae7', '#2368a0', '#ef4048', '#8c8c8c'];
+
+  const getBadgeColor = (ratio: number) => {
+    if (ratio >= 97) return "bg-[#0d416b]";
+    if (ratio >= 90) return "bg-[#00aae7]";
+    return "#ef4048";
+  };
+
+
   return (
     <div className="space-y-6">
 
@@ -143,8 +153,8 @@ export function DailyStats() {
                 <XAxis dataKey="hour" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="success" stackId="a" fill="#8884d8" name="Success" />
-                <Bar dataKey="failure" stackId="a" fill="#82ca9d" name="Failure" />
+                <Bar dataKey="success" stackId="a" fill="#2368a0" name="Success" />
+                <Bar dataKey="failure" stackId="a" fill="#ef4048" name="Failure" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -170,7 +180,7 @@ export function DailyStats() {
                   dataKey="value"
                 >
                   {documentTypeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip />
@@ -193,7 +203,10 @@ export function DailyStats() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="font-medium">{partner.partner}</span>
-                    <Badge variant={partner.ratio >= 97 ? "default" : "secondary"}>{partner.ratio}%</Badge>
+                    <Badge
+                      className={`text-white ${getBadgeColor(partner.ratio)}`}
+                    >
+                      {partner.ratio}%</Badge>
                   </div>
                   <div className="text-sm text-muted-foreground">
                     {partner.success.toLocaleString()} success, {partner.failure} failures

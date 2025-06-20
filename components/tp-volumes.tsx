@@ -64,6 +64,11 @@ const partnerVolumes = [
 ]
 
 export function TPVolumes() {
+
+  const getTrendColor = (trend: string) =>
+    trend === "up" ? "bg-[#0d416b]" : "bg-[#ef4048]";
+
+
   return (
     <div className="space-y-6">
       {/* <div className="flex items-center justify-between">
@@ -168,10 +173,10 @@ export function TPVolumes() {
                 <XAxis dataKey="period" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="partnerA" fill="#8884d8" name="Partner A" />
-                <Bar dataKey="partnerB" fill="#82ca9d" name="Partner B" />
-                <Bar dataKey="partnerC" fill="#ffc658" name="Partner C" />
-                <Bar dataKey="partnerD" fill="#ff7300" name="Partner D" />
+                <Bar dataKey="partnerA" fill="#0d416b" name="Partner A" />
+                <Bar dataKey="partnerB" fill="#2368a0" name="Partner B" />
+                <Bar dataKey="partnerC" fill="#00aae7" name="Partner C" />
+                <Bar dataKey="partnerD" fill="#ef4048" name="Partner D" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -190,7 +195,7 @@ export function TPVolumes() {
                 <XAxis dataKey="month" />
                 <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="volume" stroke="#8884d8" strokeWidth={2} name="Volume" />
+                <Line type="monotone" dataKey="volume" stroke="#0d416b" strokeWidth={2} name="Volume" />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -223,12 +228,15 @@ export function TPVolumes() {
                   <TableCell>{partner.weekly.toLocaleString()}</TableCell>
                   <TableCell>{partner.monthly.toLocaleString()}</TableCell>
                   <TableCell>
-                    <Badge variant={partner.trend === "up" ? "default" : "secondary"}>
+                    {/* <Badge variant={partner.trend === "up" ? "default" : "secondary"}>
+                      {partner.trend === "up" ? "↗" : "↘"} {partner.trend}
+                    </Badge> */}
+                    <Badge className={`text-white ${getTrendColor(partner.trend)}`}>
                       {partner.trend === "up" ? "↗" : "↘"} {partner.trend}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <span className={partner.trend === "up" ? "text-green-600" : "text-red-600"}>{partner.change}</span>
+                    <span className={partner.trend === "up" ? "text-[#0d416b]" : "text-[#ef4048]"}>{partner.change}</span>
                   </TableCell>
                 </TableRow>
               ))}

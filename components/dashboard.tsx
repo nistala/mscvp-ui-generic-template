@@ -37,6 +37,7 @@ const documentTypes = [
 ]
 
 export function Dashboard() {
+  const COLORS = ['#00aae7', '#2368a0','#ef4048', '#0d416b', '#8c8c8c'];
   return (
     <div className="space-y-6">
       {/* <div>
@@ -126,7 +127,7 @@ export function Dashboard() {
                 <XAxis dataKey="day" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="transactions" fill="#8884d8" name="Transactions" />
+                <Bar dataKey="transactions" fill="#2368a0" name="Transactions" />
                 <Bar dataKey="failures" fill="#82ca9d" name="Failures" />
               </BarChart>
             </ResponsiveContainer>
@@ -140,7 +141,7 @@ export function Dashboard() {
             <CardDescription>Transaction volume by trading partner</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
+            {/* <ResponsiveContainer width="100%" height={350}>
               <PieChart>
                 <Pie
                   data={partnerData}
@@ -158,7 +159,28 @@ export function Dashboard() {
                 </Pie>
                 <Tooltip />
               </PieChart>
+            </ResponsiveContainer> */}
+
+            <ResponsiveContainer width="100%" height={350}>
+              <PieChart>
+                <Pie
+                  data={partnerData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {partnerData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
             </ResponsiveContainer>
+
           </CardContent>
         </Card>
       </div>
@@ -178,7 +200,7 @@ export function Dashboard() {
                   <p className="text-sm text-muted-foreground">{doc.count.toLocaleString()} transactions</p>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Progress value={doc.percentage} className="w-[60px]" />
+                  <Progress value={doc.percentage}  className="w-[60px] [&>div]:bg-[#00aae7]" />
                   <span className="text-sm text-muted-foreground w-[40px]">{doc.percentage}%</span>
                 </div>
               </div>
