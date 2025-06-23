@@ -1,0 +1,27 @@
+name: Deploy MSCVP UI to Cloud Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      REGION: ${{ secrets.GCLOUD_REGION }}
+      PROJECT_ID: ${{ secrets.GCLOUD_PROJECT }}
+
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+
+    - name: Setup Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        service_account_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+        project_id: ${{ secrets.GCLOUD_PROJECT }}
+
+    - name: Deploy to Cloud Run via Buildpacks
+      run: |
+        gcloud run deploy mscvp-ui-service --source . --region $REGION --platform managed --allow-unauthenticated
