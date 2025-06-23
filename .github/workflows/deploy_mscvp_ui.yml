@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      REGION: ${{ secrets.GCLOUD_REGION }}
       PROJECT_ID: ${{ secrets.GCLOUD_PROJECT }}
 
 
@@ -24,4 +23,4 @@ jobs:
 
     - name: Deploy to Cloud Run via Buildpacks
       run: |
-        gcloud run deploy mscvp-ui-service --source . --region $REGION --platform managed --allow-unauthenticated
+        gcloud run deploy mscvp-ui-service --source . --region us-central1 --platform managed --allow-unauthenticated
